@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>สมุดคะแนนครูใจดี</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Thai", sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    header {
+      background: white;
+      padding: 20px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #6b7280;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .welcome {
+      margin-bottom: 25px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 5px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.06);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .number {
+      font-size: 34px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .menu {
+      margin-top: 30px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 18px;
+      border: 0;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📘 สมุดคะแนนครูใจดี</h1>
+  <p>ระบบบันทึกคะแนนและการเข้าเรียนของนักเรียน</p>
+</header>
+
+<div class="container">
+
+  <div class="welcome">
+    <h2>แดชบอร์ด</h2>
+    <p>ภาพรวมข้อมูลประจำภาคเรียน</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>👨‍🎓 นักเรียน</h3>
+      <div class="number">0</div>
+      <p>คน</p>
+    </div>
+
+    <div class="card">
+      <h3>🏫 ห้องเรียน</h3>
+      <div class="number">0</div>
+      <p>ห้อง</p>
+    </div>
+
+    <div class="card">
+      <h3>📚 รายวิชา</h3>
+      <div class="number">0</div>
+      <p>วิชา</p>
+    </div>
+
+    <div class="card">
+      <h3>📝 งาน/กิจกรรม</h3>
+      <div class="number">0</div>
+      <p>รายการ</p>
+    </div>
+
+  </div>
+
+  <div class="menu">
+
+    <h2>เมนูหลัก</h2>
+
+    <div class="menu-grid">
+
+      <button>👨‍🎓 จัดการนักเรียน</button>
+
+      <button>🏫 จัดการห้องเรียน</button>
+
+      <button>📚 จัดการรายวิชา</button>
+
+      <button>📝 บันทึกคะแนน</button>
+
+      <button>✅ เช็กชื่อ</button>
+
+      <button>📊 รายงานคะแนน</button>
+
+      <button>📈 สถิติการเข้าเรียน</button>
+
+      <button>⚙️ ตั้งค่าระบบ</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  สมุดคะแนนครูใจดี
+</footer>
+
+</body>
+</html>
