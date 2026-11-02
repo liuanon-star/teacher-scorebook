@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ตั้งค่า · NEON SCORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="antialiased">
+  <div id="nav-mount"></div>
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <div class="mb-6 fade-in-up">
+      <h1 class="text-2xl sm:text-3xl font-black text-white">ตั้งค่า</h1>
+      <p class="text-zinc-400 text-sm mt-1">ปรับแต่งระบบให้ตรงกับการแข่งขันของคุณ</p>
+    </div>
+
+    <!-- Scoring rules -->
+    <section class="glass-card p-6 mb-6 fade-in-up" style="animation-delay:.05s">
+      <div class="section-heading">
+        <h2 class="text-lg font-bold text-white">เกณฑ์การให้คะแนน</h2>
+      </div>
+      <form id="settings-form" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-zinc-400 mb-1.5">ชื่อแอป</label>
+            <input id="app-title" type="text" maxlength="30" class="input-neon" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-400 mb-1.5">ประเภทกีฬา</label>
+            <input id="sport-type" type="text" maxlength="30" placeholder="เช่น ฟุตบอล, บาสเกตบอล" class="input-neon" />
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-emerald-300 mb-1.5">คะแนนชนะ</label>
+            <input id="win-points" type="number" min="0" max="99" class="input-neon text-center score-big text-lg" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-amber-300 mb-1.5">คะแนนเสมอ</label>
+            <input id="draw-points" type="number" min="0" max="99" class="input-neon text-center score-big text-lg" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-rose-300 mb-1.5">คะแนนแพ้</label>
+            <input id="lose-points" type="number" min="0" max="99" class="input-neon text-center score-big text-lg" />
+          </div>
+        </div>
+        <div class="flex justify-end pt-2">
+          <button type="submit" class="btn-neon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            บันทึกการตั้งค่า
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Data management -->
+    <section class="glass-card p-6 mb-6 fade-in-up" style="animation-delay:.1s">
+      <div class="section-heading">
+        <h2 class="text-lg font-bold text-white">จัดการข้อมูล</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3 mb-4">
+        <button id="export-btn" class="btn-ghost justify-start w-full">
+          <svg class="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <div class="text-left">
+            <p class="text-sm font-semibold text-white">ส่งออกข้อมูล (JSON)</p>
+            <p class="text-xs text-zinc-500">ดาวน์โหลดสำรองทุกทีมและแมตช์</p>
+          </div>
+        </button>
+        <button id="import-btn" class="btn-ghost justify-start w-full">
+          <svg class="w-5 h-5 text-fuchsia-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+          <div class="text-left">
+            <p class="text-sm font-semibold text-white">นำเข้าข้อมูล (JSON)</p>
+            <p class="text-xs text-zinc-500">โหลดไฟล์สำรองกลับเข้าระบบ</p>
+          </div>
+        </button>
+        <input type="file" id="import-input" accept=".json,application/json" class="hidden" />
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3">
+        <button id="seed-btn" class="btn-ghost justify-start w-full">
+          <svg class="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          <div class="text-left">
+            <p class="text-sm font-semibold text-white">โหลดข้อมูลตัวอย่าง</p>
+            <p class="text-xs text-zinc-500">สร้างทีมและแมตช์ตัวอย่าง 4 ทีม</p>
+          </div>
+        </button>
+        <button id="reset-btn" class="btn-danger justify-start w-full">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3"/></svg>
+          <div class="text-left">
+            <p class="text-sm font-semibold">รีเซ็ตข้อมูลทั้งหมด</p>
+            <p class="text-xs opacity-80">ลบทุกทีมและแมตช์ถาวร</p>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Storage info -->
+    <section class="glass-card p-6 fade-in-up" style="animation-delay:.15s">
+      <div class="section-heading">
+        <h2 class="text-lg font-bold text-white">สถานะการจัดเก็บ</h2>
+      </div>
+      <div id="storage-info" class="grid sm:grid-cols-3 gap-3"></div>
+      <p class="text-xs text-zinc-500 mt-4">
+        ข้อมูลทั้งหมดเก็บใน <code class="text-fuchsia-300">localStorage</code> ของเบราว์เซอร์เครื่องนี้
+        หากล้าง cache/cookies ข้อมูลจะหาย — แนะนำให้ export สำรองเป็นครั้งคราว
+      </p>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

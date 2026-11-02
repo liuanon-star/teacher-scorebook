@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บันทึกผล · NEON SCORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="antialiased">
+  <div id="nav-mount"></div>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+    <div class="mb-6 fade-in-up">
+      <h1 class="text-2xl sm:text-3xl font-black text-white">บันทึกผลแข่งขัน</h1>
+      <p class="text-zinc-400 text-sm mt-1">เลือกทีมทั้งสองฝ่าย กรอกคะแนน แล้วกดบันทึก</p>
+    </div>
+
+    <!-- Match entry form -->
+    <section class="glass-card p-6 sm:p-8 mb-8 fade-in-up" style="animation-delay:.05s">
+      <form id="match-form" class="space-y-6">
+        <!-- Team selectors + score -->
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 items-stretch">
+          <!-- Team A -->
+          <div class="rounded-xl bg-zinc-800/30 border border-zinc-700/50 p-4">
+            <p class="text-xs uppercase tracking-wider text-fuchsia-300/80 mb-2 text-center">ทีมเจ้าบ้าน</p>
+            <select id="team-a" class="input-neon mb-4" required>
+              <option value="">-- เลือกทีม --</option>
+            </select>
+            <div class="flex flex-col items-center">
+              <div id="avatar-a" class="team-avatar w-16 h-16 text-xl mb-3 opacity-30" style="background:#27272a">?</div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="dec-a" class="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-fuchsia-500/30 hover:text-white transition text-lg font-bold">−</button>
+                <input id="score-a" type="number" min="0" max="999" value="0" class="input-neon w-20 text-center text-2xl font-black score-big" />
+                <button type="button" id="inc-a" class="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-fuchsia-500/30 hover:text-white transition text-lg font-bold">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- VS -->
+          <div class="flex md:flex-col items-center justify-center gap-2 py-2">
+            <div class="w-px md:w-12 h-12 md:h-px bg-gradient-to-r from-fuchsia-500/50 to-cyan-500/50"></div>
+            <span class="text-2xl font-black bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">VS</span>
+            <div class="w-px md:w-12 h-12 md:h-px bg-gradient-to-r from-cyan-500/50 to-fuchsia-500/50"></div>
+          </div>
+
+          <!-- Team B -->
+          <div class="rounded-xl bg-zinc-800/30 border border-zinc-700/50 p-4">
+            <p class="text-xs uppercase tracking-wider text-cyan-300/80 mb-2 text-center">ทีมเยือน</p>
+            <select id="team-b" class="input-neon mb-4" required>
+              <option value="">-- เลือกทีม --</option>
+            </select>
+            <div class="flex flex-col items-center">
+              <div id="avatar-b" class="team-avatar w-16 h-16 text-xl mb-3 opacity-30" style="background:#27272a">?</div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="dec-b" class="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-cyan-500/30 hover:text-white transition text-lg font-bold">−</button>
+                <input id="score-b" type="number" min="0" max="999" value="0" class="input-neon w-20 text-center text-2xl font-black score-big" />
+                <button type="button" id="inc-b" class="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-cyan-500/30 hover:text-white transition text-lg font-bold">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Predicted outcome -->
+        <div id="outcome-hint" class="text-center text-sm text-zinc-400 py-2 rounded-lg bg-zinc-800/30 border border-zinc-700/40 hidden"></div>
+
+        <!-- Match info -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-zinc-400 mb-1.5">วันที่แข่ง</label>
+            <input id="match-date" type="date" class="input-neon" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-zinc-400 mb-1.5">หมายเหตุ (ไม่บังคับ)</label>
+            <input id="match-note" type="text" maxlength="80" placeholder="เช่น รอบชิงชนะเลิศ" class="input-neon" />
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="flex flex-col sm:flex-row justify-end gap-3 pt-2">
+          <button type="reset" id="reset-btn" class="btn-ghost">รีเซ็ตฟอร์ม</button>
+          <button type="submit" class="btn-neon">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            บันทึกผลแข่งขัน
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- History -->
+    <section class="fade-in-up" style="animation-delay:.1s">
+      <div class="section-heading">
+        <h2 class="text-lg font-bold text-white">ประวัติแมตช์</h2>
+        <span id="match-count" class="text-xs px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-400"></span>
+      </div>
+      <div id="match-list" class="glass-card p-4 sm:p-5"></div>
+    </section>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/match.js"></script>
+</body>
+</html>

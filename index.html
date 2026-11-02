@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แดชบอร์ด · NEON SCORE</title>
+  <meta name="description" content="เว็บเก็บคะแนนกีฬา/เกม แบบ Dark Neon" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'Sarabun', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="antialiased">
+  <div id="nav-mount"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <!-- Hero / welcome -->
+    <section class="mb-8 fade-in-up">
+      <div class="glass-card p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-fuchsia-300/80 mb-2">ยินดีต้อนรับสู่</p>
+            <h1 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-fuchsia-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
+              สกอร์บอร์ดกีฬา
+            </h1>
+            <p class="text-zinc-400 mt-2 text-sm">ติดตามคะแนน สถิติ และอันดับของทุกทีมแบบเรียลไทม์</p>
+          </div>
+          <div class="flex gap-2">
+            <a href="match.html" class="btn-neon">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              เพิ่มผลแข่งขัน
+            </a>
+            <a href="players.html" class="btn-ghost">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              จัดการทีม
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats grid -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" id="stats-grid">
+      <!-- filled by JS -->
+    </section>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      <!-- Top 3 -->
+      <section class="lg:col-span-2 fade-in-up" style="animation-delay:.1s">
+        <div class="section-heading">
+          <h2 class="text-lg font-bold text-white">โปดียม 3 อันดับแรก</h2>
+        </div>
+        <div id="podium" class="glass-card p-5 sm:p-6 min-h-[200px]"></div>
+      </section>
+
+      <!-- Recent matches -->
+      <section class="fade-in-up" style="animation-delay:.2s">
+        <div class="section-heading">
+          <h2 class="text-lg font-bold text-white">ผลแข่งขันล่าสุด</h2>
+        </div>
+        <div id="recent-matches" class="glass-card p-5 min-h-[200px]"></div>
+      </section>
+    </div>
+
+    <!-- Quick actions -->
+    <section class="mt-8 fade-in-up" style="animation-delay:.3s">
+      <div class="section-heading">
+        <h2 class="text-lg font-bold text-white">ทางลัด</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="players.html" class="glass-card p-4 flex flex-col items-center text-center hover:border-fuchsia-500/40 transition group">
+          <svg class="w-7 h-7 text-fuchsia-400 mb-2 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+          <span class="text-sm font-medium text-zinc-200">เพิ่มทีมใหม่</span>
+        </a>
+        <a href="match.html" class="glass-card p-4 flex flex-col items-center text-center hover:border-cyan-500/40 transition group">
+          <svg class="w-7 h-7 text-cyan-400 mb-2 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-sm font-medium text-zinc-200">บันทึกผล</span>
+        </a>
+        <a href="leaderboard.html" class="glass-card p-4 flex flex-col items-center text-center hover:border-amber-500/40 transition group">
+          <svg class="w-7 h-7 text-amber-400 mb-2 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          <span class="text-sm font-medium text-zinc-200">ดูตารางอันดับ</span>
+        </a>
+        <a href="settings.html" class="glass-card p-4 flex flex-col items-center text-center hover:border-pink-500/40 transition group">
+          <svg class="w-7 h-7 text-pink-400 mb-2 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span class="text-sm font-medium text-zinc-200">ตั้งค่าระบบ</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="mt-12 text-center text-xs text-zinc-600">
+      <p>NEON SCORE · ทำด้วย ❤️ HTML + Tailwind + JavaScript · ข้อมูลเก็บใน localStorage ของเบราว์เซอร์</p>
+    </footer>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

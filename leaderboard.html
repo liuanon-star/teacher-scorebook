@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ตารางอันดับ · NEON SCORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="antialiased">
+  <div id="nav-mount"></div>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 fade-in-up">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-black text-white">ตารางอันดับ</h1>
+        <p class="text-zinc-400 text-sm mt-1">เรียงตามคะแนน → จำนวนชนะ → ส่วนต่างประตู</p>
+      </div>
+      <div class="flex gap-2">
+        <select id="sort-select" class="input-neon text-sm w-auto">
+          <option value="default">คะแนนรวม (ค่าเริ่มต้น)</option>
+          <option value="wins">จำนวนชนะ</option>
+          <option value="diff">ส่วนต่างประตู</option>
+          <option value="played">จำนวนแมตช์</option>
+          <option value="goalsFor">ประตูได้</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Top 3 highlight cards -->
+    <section id="top3-section" class="mb-8"></section>
+
+    <!-- Full table -->
+    <section class="glass-card p-2 sm:p-4 fade-in-up" style="animation-delay:.1s">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-zinc-400 text-xs uppercase tracking-wider">
+              <th class="px-3 py-3 text-left w-12">#</th>
+              <th class="px-3 py-3 text-left">ทีม</th>
+              <th class="px-3 py-3 text-center score-big">ลงแข่ง</th>
+              <th class="px-3 py-3 text-center score-big text-emerald-300/80">ชนะ</th>
+              <th class="px-3 py-3 text-center score-big text-amber-300/80">เสมอ</th>
+              <th class="px-3 py-3 text-center score-big text-rose-300/80">แพ้</th>
+              <th class="px-3 py-3 text-center score-big">ได้</th>
+              <th class="px-3 py-3 text-center score-big">เสีย</th>
+              <th class="px-3 py-3 text-center score-bold">ต่าง</th>
+              <th class="px-3 py-3 text-center score-big text-fuchsia-300">คะแนน</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="text-xs text-zinc-500 mt-4 text-center">
+      * เกณฑ์การจัดอันดับ: คะแนนรวม → ชนะ → ส่วนต่างประตู → ประตูได้
+    </p>
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/leaderboard.js"></script>
+</body>
+</html>

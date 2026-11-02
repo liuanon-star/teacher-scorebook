@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ทีม/ผู้เล่น · NEON SCORE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="antialiased">
+  <div id="nav-mount"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 fade-in-up">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-black text-white">ทีม / ผู้เล่น</h1>
+        <p class="text-zinc-400 text-sm mt-1">เพิ่ม แก้ไข หรือลบทีมในระบบ</p>
+      </div>
+      <button id="add-btn" class="btn-neon">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+        เพิ่มทีมใหม่
+      </button>
+    </div>
+
+    <!-- Search -->
+    <div class="glass-card p-3 mb-6 fade-in-up" style="animation-delay:.05s">
+      <div class="relative">
+        <svg class="w-5 h-5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input id="search-input" type="text" placeholder="ค้นหาชื่อทีม..." class="input-neon pl-10" />
+      </div>
+    </div>
+
+    <!-- Team cards grid -->
+    <div id="teams-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+    <!-- Empty state container -->
+    <div id="empty-teams" class="hidden"></div>
+  </main>
+
+  <!-- Modal mount -->
+  <div id="modal-mount"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/players.js"></script>
+</body>
+</html>
